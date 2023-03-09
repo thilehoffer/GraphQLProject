@@ -12,4 +12,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Mutation\" />
+    <Folder Include="Query\" />
+    <Folder Include="Schema\" />
+  </ItemGroup>
+
 </Project>
