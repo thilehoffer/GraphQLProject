@@ -9,5 +9,6 @@ namespace GraphQLProject.Interfaces
         Product UpdateProduct(int id, Product product); 
         void DeleteProduct(int id);
         Product? GetProductById(int id);
+        object? GetProductById<TType>(Func<string, TType?, TType?> getArgument);
     }
 }
