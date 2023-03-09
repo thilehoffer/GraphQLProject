@@ -8,6 +8,6 @@ namespace GraphQLProject.Interfaces
         Product AddProduct(Product product); 
         Product UpdateProduct(int id, Product product); 
         void DeleteProduct(int id);
-        Product GetProductById(int id);
+        Product? GetProductById(int id);
     }
 }

@@ -26,7 +26,7 @@ namespace GraphQLProject.Controllers
 
         // GET api/<ProductsController>/5
         [HttpGet("{id}")]
-        public Product Get(int id)
+        public Product? Get(int id)
         {
             return  _productService.GetProductById(id);
         }
