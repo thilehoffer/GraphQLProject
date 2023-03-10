@@ -27,10 +27,10 @@ namespace GraphQLProject.Services
             return products;
         }
 
-        public Product?  GetProductById(int id)
+        public Product? GetProductById(int id)
         {
             return products.Find(f => f.Id == id);
-           
+
         }
 
         public Product UpdateProduct(int id, Product product)

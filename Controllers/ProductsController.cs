@@ -28,15 +28,15 @@ namespace GraphQLProject.Controllers
         [HttpGet("{id}")]
         public Product? Get(int id)
         {
-            return  _productService.GetProductById(id);
+            return _productService.GetProductById(id);
         }
 
         // POST api/<ProductsController>
         [HttpPost]
         public Product Post([FromBody] Product product)
         {
-           return _productService.AddProduct(product);
-          
+            return _productService.AddProduct(product);
+
 
         }
 
