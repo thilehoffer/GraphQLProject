@@ -1,39 +1,46 @@
-using GraphQL.Server;
-using GraphQL.Server.Ui.GraphiQL;
+using GraphQL.Server; 
 using GraphQL.Types;
 using GraphQLProject.Data;
 using GraphQLProject.Interfaces;
-using GraphQLProject.Mutation;
 using GraphQLProject.Query;
 using GraphQLProject.Schema;
 using GraphQLProject.Services;
 using GraphQLProject.Type;
 using Microsoft.EntityFrameworkCore;
-using System;
+ 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddTransient<IProduct, ProductService>();
-builder.Services.AddTransient<ProductType>();
-builder.Services.AddTransient<ProductQuery>();
-builder.Services.AddTransient<ProductMutation>();
-builder.Services.AddTransient<ISchema, ProductSchema>();
+builder.Services.AddTransient<IMenu, MenuService>();
+builder.Services.AddTransient<ISubMenu, SubMenuService>();
+builder.Services.AddTransient<IReservation, ReservationService>();
+
+builder.Services.AddTransient<MenuType>();
+builder.Services.AddTransient<SubMenuType>();
+builder.Services.AddTransient<ReservationType>();
+
+builder.Services.AddTransient<MenuQuery>();
+builder.Services.AddTransient<SubMenuQuery>();
+builder.Services.AddTransient<ReservationQuery>(); 
+builder.Services.AddTransient<RootQuery>();
+
+builder.Services.AddTransient<ISchema, RootSchema>();
 
 builder.Services.AddGraphQL(options => {
     options.EnableMetrics = false; }).AddSystemTextJson();
  
 
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+//builder.Services.AddEndpointsApiExplorer();
+//builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<GraphQLDbContext>(
     option => option.UseSqlServer(
-        @"Data Source= (localdb)\MSSQLLocalDB;Initial Catalog=GraphQLDb;Integrated Security = True"
+        @"Data Source= (localdb)\MSSQLLocalDB;Initial Catalog=CoffeeShopDb;Integrated Security = True"
     )) ;
 
 
