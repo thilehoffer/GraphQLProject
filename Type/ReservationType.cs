@@ -9,6 +9,7 @@ namespace GraphQLProject.Type
             Field(r => r.Id);
             Field(r => r.Name);
             Field(r => r.Phone);
+            Field(r => r.Email);
             Field(r => r.TotalPeople);
             Field(r => r.Time);
             Field(r => r.Date);

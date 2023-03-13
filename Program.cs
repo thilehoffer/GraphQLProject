@@ -2,6 +2,7 @@ using GraphQL.Server;
 using GraphQL.Types;
 using GraphQLProject.Data;
 using GraphQLProject.Interfaces;
+using GraphQLProject.Mutation;
 using GraphQLProject.Query;
 using GraphQLProject.Schema;
 using GraphQLProject.Services;
@@ -27,6 +28,15 @@ builder.Services.AddTransient<SubMenuQuery>();
 builder.Services.AddTransient<ReservationQuery>(); 
 builder.Services.AddTransient<RootQuery>();
 
+builder.Services.AddTransient<MenuInputType>();
+builder.Services.AddTransient<SubMenuInputType>();
+builder.Services.AddTransient<ReservationInputType>();
+
+
+builder.Services.AddTransient<MenuMutation>();
+builder.Services.AddTransient<SubMenuMutation>();
+builder.Services.AddTransient<ReservationMutation>();
+builder.Services.AddTransient<RootMutation>();
 builder.Services.AddTransient<ISchema, RootSchema>();
 
 builder.Services.AddGraphQL(options => {
@@ -59,11 +69,11 @@ var app = builder.Build();
 //app.UseAuthorization();
 
 //app.MapControllers();
-using (var scope = app.Services.CreateScope())
-{
-    var dbContext = scope.ServiceProvider.GetRequiredService<GraphQLDbContext>();
-    dbContext.Database.EnsureCreated();
-}
+//using (var scope = app.Services.CreateScope())
+//{
+//    var dbContext = scope.ServiceProvider.GetRequiredService<GraphQLDbContext>();
+//    dbContext.Database.EnsureCreated();
+//}
 app.UseGraphQLGraphiQL("/graphql");
 app.UseGraphQL<ISchema>();
 app.Run();
